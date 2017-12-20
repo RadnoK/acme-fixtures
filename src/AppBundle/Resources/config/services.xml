@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<container
+        xmlns="http://symfony.com/schema/dic/services"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd"
+>
+    <services>
+        <service id="acme.fixture.locales" class="AppBundle\Fixtures\LocaleFixture">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <tag name="sylius_fixtures.fixture" />
+        </service>
+
+        <service id="acme.fixture.warehouse_products" class="AppBundle\Fixtures\ProductFixture">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <argument type="service" id="acme.factory.acme_product" />
+            <tag name="sylius_fixtures.fixture" />
+        </service>
+
+        <service id="acme.factory.acme_product" class="AppBundle\Fixtures\Factory\ProductFactory">
+        </service>
+    </services>
+</container>
